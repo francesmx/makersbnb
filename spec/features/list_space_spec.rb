@@ -17,4 +17,6 @@ feature "list a Space" do
     expect(page).to have_content('7 July 2017')
   end
 
+
+
 end
