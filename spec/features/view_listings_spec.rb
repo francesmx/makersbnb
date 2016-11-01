@@ -6,10 +6,16 @@ require 'spec_helper'
 describe 'View Listing' do
 
   it "can view a list of all available properties" do
-    visit('/view')
+    visit('/spaces')
     expect(page).to have_content "Available Properties"
     expect(page).to have_content "Beautiful Relaxing Space"
     expect(page).to have_content "Description"
+  end
+
+  it "be able to filter properties by data availability" do
+    visit('/spaces')
+    expect(page).to have_content "Available from"
+    expect(page).to have_content "Available to"
   end
 
 end
