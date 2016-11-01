@@ -8,7 +8,19 @@ class BnB < Sinatra::Base
   set :session_secret, 'super secret'
 
   get '/' do
-    'Hello BnB!'
+    erb :'home'
+  end
+
+  get '/home' do
+     erb :'register'
+  end
+
+  get '/register' do
+    erb :'register'
+  end
+
+  post '/register' do
+    erb :'welcome'
   end
 
   get '/spaces' do
