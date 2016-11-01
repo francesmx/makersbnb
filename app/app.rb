@@ -4,7 +4,6 @@ require 'sinatra/base'
 
 class BnB < Sinatra::Base
 
-
   get '/' do
     'Hello BnB!'
   end
