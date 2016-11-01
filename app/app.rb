@@ -10,7 +10,7 @@ class BnB < Sinatra::Base
   end
 
   get '/spaces' do
-    erb :'spaces/availability'
+    erb :'spaces'
   end
 
   get '/spaces/new' do
@@ -18,6 +18,12 @@ class BnB < Sinatra::Base
   end
 
   post '/spaces' do
+    redirect '/spaces'
+  end
+
+  post '/spaces/filter' do
+    # session[:check_in] = params[:check_in]
+    # session[:check_out] = params[:check_out]
     redirect '/spaces'
   end
 
