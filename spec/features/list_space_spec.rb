@@ -11,5 +11,10 @@ feature "list a Space" do
     click_button 'List my Space'
     expect(current_path).to eq '/spaces'
     expect(page).to have_content('Beautiful Relaxing Space')
+    expect(page).to have_content('have fun at our BnB')
+    expect(page).to have_content('50')
+    expect(page).to have_content('1 January 2017')
+    expect(page).to have_content('7 January 2017')
   end
+
 end
