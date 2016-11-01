@@ -1,16 +1,27 @@
+ENV["RACK_ENV"] ||= "development"
+
 require 'sinatra/base'
 
 class BnB < Sinatra::Base
+
+
   get '/' do
     'Hello BnB!'
   end
 
   get '/spaces' do
-    #need to create @properties
     erb :'spaces'
   end
 
-  post '/spaces/filer' do
+  get '/spaces/new' do
+    erb :'spaces/new'
+  end
+
+  post '/spaces' do
+    redirect '/spaces'
+  end
+
+  post '/spaces/filter' do
     # session[:check_in] = params[:check_in]
     # session[:check_out] = params[:check_out]
     redirect '/spaces'
