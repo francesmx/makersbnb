@@ -5,11 +5,11 @@ class Space
   include DataMapper::Resource
 
   property :id,           Serial
-  property :description,  Text
   property :name,         String
+  property :description,  Text
   property :price,        Integer
-  property :check_in,     Date
-  property :check_out,    Date
+  property :available_from,     Date
+  property :available_to,    Date
 
 end
 

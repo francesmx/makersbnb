@@ -4,14 +4,16 @@ require 'sinatra/base'
 require_relative 'models/space'
 
 class BnB < Sinatra::Base
-
+  enable :sessions
+  set :session_secret, 'super secret'
 
   get '/' do
     'Hello BnB!'
   end
 
   get '/spaces' do
-    erb :'spaces'
+    @spaces = Space.all
+    erb :spaces
   end
 
   get '/spaces/new' do
@@ -19,6 +21,11 @@ class BnB < Sinatra::Base
   end
 
   post '/spaces' do
+    Space.create(name: params[:name],
+                 description: params[:description],
+                 price: params[:price],
+                 available_from: params[:available_from],
+                 available_to: params[:available_to])
     redirect '/spaces'
   end
 
