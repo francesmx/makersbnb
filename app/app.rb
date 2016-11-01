@@ -6,7 +6,11 @@ class BnB < Sinatra::Base
 
 
   get '/' do
-    "Hello BnB!"
+    erb :'home'
+  end
+
+  get '/home' do
+     erb :'register'
   end
 
   get '/register' do
@@ -14,7 +18,7 @@ class BnB < Sinatra::Base
   end
 
   post '/register' do
-    erb :'spaces'
+    erb :'welcome'
   end
 
   get '/spaces' do
