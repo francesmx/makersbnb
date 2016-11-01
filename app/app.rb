@@ -6,7 +6,7 @@ class BnB < Sinatra::Base
 
 
   get '/' do
-    'Hello BnB!'
+    erb :'index'
   end
 
   get '/spaces' do
