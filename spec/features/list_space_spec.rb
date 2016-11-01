@@ -10,8 +10,6 @@ feature "list spaces" do
     fill_in :availablity_date_to, with: '7 January 2017'
     click_button 'List my Space'
     expect(current_path).to eq '/spaces'
-    within 'spaces' do
-      expect(page).to have_content('sexy time')
-    end
+    expect(page).to have_content('sexy time')
   end
 end
