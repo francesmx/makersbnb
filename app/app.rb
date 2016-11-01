@@ -6,8 +6,14 @@ class BnB < Sinatra::Base
   end
 
   get '/spaces' do
-    'Hello BnB!'
+    #need to create @properties
     erb :'spaces'
+  end
+
+  post '/spaces/filer' do
+    # session[:check_in] = params[:check_in]
+    # session[:check_out] = params[:check_out]
+    redirect '/spaces'
   end
 
   # start the server if ruby file executed directly

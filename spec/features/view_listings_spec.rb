@@ -10,9 +10,12 @@ describe 'View Listing' do
     expect(page).to have_content "Available Properties"
     expect(page).to have_content "Beautiful Relaxing Space"
     expect(page).to have_content "Description"
+    within('ul li') do
+      expect(page).to have_content "More"
+    end
   end
 
-  it "be able to filter properties by data availability" do
+  it "be able to filter properties by date availability" do
     visit('/spaces')
     expect(page).to have_content "Available from"
     expect(page).to have_content "Available to"
