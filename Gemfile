@@ -9,7 +9,8 @@ ruby '2.3.1'
 group :test do
   gem 'rspec'
   gem 'capybara'
-  gem 'capybara/rspec'
+  #gem 'capybara/rspec'
+  gem 'rspec-sinatra'
 
 end
 #
