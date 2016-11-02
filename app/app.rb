@@ -8,6 +8,12 @@ class BnB < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
 
+  helpers do
+  def current_user
+    @current_user ||= User.get(session[:user_id])
+  end
+end
+
   get '/' do
     erb :'home'
   end
@@ -25,7 +31,7 @@ class BnB < Sinatra::Base
     @user = User.new(email: params[:email],
         password: params[:password],
         password_confirmation: params[:password_confirmation])
-      erb :'welcome'
+    erb :'welcome'
   end
 
   get '/sessions/new' do
@@ -33,7 +39,8 @@ class BnB < Sinatra::Base
   end
 
   post '/sessions' do
-      user = User.authenticate(params[:email], params[:password])
+      #user = User.authenticate(params[:email], params[:password])
+      #if / else statement required to verify data
     erb :'sessions/welcome_back'
   end
 
