@@ -4,6 +4,8 @@ require 'sinatra/base'
 require_relative 'models/space'
 
 class BnB < Sinatra::Base
+  enable :sessions
+  set :session_secret, 'super secret'
 
   get '/' do
     erb :'home'
