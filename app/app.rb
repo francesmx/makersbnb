@@ -52,6 +52,11 @@ class BnB < Sinatra::Base
     redirect '/spaces/filter_dates'
   end
 
+  get '/spaces/:id' do
+    @space = Space.get(params[:id])
+    erb :'space_listing'
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
