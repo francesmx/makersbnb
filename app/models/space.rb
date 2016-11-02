@@ -11,6 +11,11 @@ class Space
   property :available_from,     Date
   property :available_to,    Date
 
+  def self.search_availability(available_from, available_to)
+    all(:available_from.lte => available_from,
+        :available_to.gte => available_to)
+  end
+
 end
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/makersbnb_#{ENV['RACK_ENV']}")

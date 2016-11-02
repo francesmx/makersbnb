@@ -1,6 +1,6 @@
 <h1> Available Properties </h1>
 
-<form method='post' action='/spaces/filter'>
+<form method='post' action='/spaces/filter_dates'>
   <label>
     Available from:
     <input type="text" name="available_from" placeholder="Check In">
@@ -13,17 +13,20 @@
 </form>
 
 <ul>
-  <% @spaces.each do |space| %>
-  <li>
-    <h2> <%=space.name%> </h2>
-    <h3> <%=space.description%> </h3>
-    <h3> <%=space.price%> </h3>
-    <h3> <%=space.available_from.strftime("%-d %B %Y")%> </h3>
-    <h3> <%=space.available_to.strftime("%-d %B %Y")%> </h3>
-    <button type="submit" formmethod="post" formaction="#">More</button>
+  <% if @spaces %>
+    <% @spaces.each do |space| %>
+      <li>
+        <h2> <%=space.name%> </h2>
+        <h3> <%=space.description%> </h3>
+        <h3> <%=space.price%> </h3>
+        <h3> <%=space.available_from.strftime("%-d %B %Y")%> </h3>
+        <h3> <%=space.available_to.strftime("%-d %B %Y")%> </h3>
+        <button type="submit" formmethod="post" formaction="#">More</button>
 
 
-  </li>
+      </li>
+    <% end %>
+  <% else %>
+    <h2>Sorry, no spaces meet those criteria. </h2>
   <% end %>
-
 </ul>
