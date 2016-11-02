@@ -22,7 +22,9 @@
         <h3> <%=space.available_from.strftime("%-d %B %Y")%> </h3>
         <h3> <%=space.available_to.strftime("%-d %B %Y")%> </h3>
         <button type="submit" formmethod="post" formaction="#">More</button>
-
+        <form method ='post' action='/spaces/finalise'>
+          <input name='<% @spaces.name %>' type="submit" value="Request">
+        </form>
 
       </li>
     <% end %>

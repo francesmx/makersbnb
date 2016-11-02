@@ -28,6 +28,16 @@ class BnB < Sinatra::Base
     erb :spaces
   end
 
+  get '/spaces/finalise' do
+    @spaces = Space.all
+    erb :'spaces/finalise'
+  end
+
+  post '/spaces/finalise' do
+    session[:name] = @spaces.name
+    redirect '/spaces/finalise'
+  end
+
   get '/spaces/new' do
     erb :'spaces/new'
   end
