@@ -67,6 +67,11 @@ class BnB < Sinatra::Base
     erb :requests
   end
 
+  get '/requests/:id' do
+    # @request = Request.get(params[:id])
+    erb :'request'
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end
