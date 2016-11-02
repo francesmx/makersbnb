@@ -2,8 +2,6 @@ require 'bcrypt'
 require 'data_mapper'
 require 'dm-postgres-adapter'
 
-require_relative 'space'
-
 class User
 
   include DataMapper::Resource
