@@ -28,7 +28,7 @@ end
   end
 
   post '/register' do
-    @user = User.new(email: params[:email],
+    @user = User.create(email: params[:email],
         password: params[:password],
         password_confirmation: params[:password_confirmation])
     erb :'welcome'
@@ -39,7 +39,8 @@ end
   end
 
   post '/sessions' do
-      #user = User.authenticate(params[:email], params[:password])
+    user = User.authenticate(params[:email], params[:password])
+    session[:user_id] = user.id
       #if / else statement required to verify data
     erb :'sessions/welcome_back'
   end
