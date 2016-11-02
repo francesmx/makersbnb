@@ -8,7 +8,7 @@ class Request
   property :id,             Serial
   property :requested_date, Date
 
-  belongs_to :space
+  belongs_to :space, through: Resource
 
 end
 

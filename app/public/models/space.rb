@@ -5,7 +5,7 @@ require_relative 'request.rb'
 class Space
   include DataMapper::Resource
 
-  has n, :requests
+  has n, :requests, through: Resource
 
   property :id,             Serial
   property :name,           String
