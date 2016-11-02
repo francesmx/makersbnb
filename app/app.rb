@@ -2,6 +2,7 @@ ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
 require_relative 'models/space'
+require_relative 'models/request'
 
 class BnB < Sinatra::Base
   enable :sessions
@@ -55,6 +56,14 @@ class BnB < Sinatra::Base
   get '/spaces/:id' do
     @space = Space.get(params[:id])
     erb :'space_listing'
+  end
+
+  post '/spaces/request' do
+    Request.create(requested_date: params[:requested_date])
+  end
+
+  get '/spaces/request' do
+
   end
 
   # start the server if ruby file executed directly

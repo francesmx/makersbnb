@@ -1,8 +1,11 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
+require_relative 'request.rb'
 
 class Space
   include DataMapper::Resource
+
+  has n, :requests
 
   property :id,             Serial
   property :name,           String

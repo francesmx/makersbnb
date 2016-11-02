@@ -1,4 +1,13 @@
+<form method='post' action='/spaces/request'>
 <h1><%= @space.name %></h1>
 <h2><%= @space.description %></h2>
 <p>£<%= @space.price %> per night</p>
 <p>Available from: <%= @space.available_from.strftime("%-d %B %Y") %> to <%= @space.available_to.strftime("%-d %B %Y") %></p>
+
+
+<label> Please select the date you wish to stay:
+<input type="text" name="requested_date">
+
+</label>
+<input type="submit" value="Request Booking">
+</form>
