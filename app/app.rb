@@ -57,6 +57,16 @@ class BnB < Sinatra::Base
     erb :'space_listing'
   end
 
+  post '/requests/new' do
+    session[:check_in] = params[:check_in]
+    session[:check_out] = params[:check_in]
+    redirect '/requests'
+  end
+
+  get '/requests' do
+    erb :requests
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end

@@ -19,10 +19,12 @@ def create_spaces
 end
 
 def request_booking
+  create_spaces
   visit '/spaces/1'
-  fill_in('date_required_from', with: '2016/11/01')
-  fill_in('date_required_to', with: '2016/11/08')
-  click_link 'request_booking'
+  expect(current_path).to eq '/spaces/1'
+  fill_in 'check_in', with: '2016/11/01'
+  fill_in('check_out', with: '2016/11/08')
+  click_button "Request Booking"
   expect(current_path).to eq '/requests'
-  expect(page).to have_content("Bookings I've made")
+  expect(page).to have_content("Requests I've made")
 end
