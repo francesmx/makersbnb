@@ -33,6 +33,7 @@ class BnB < Sinatra::Base
   end
 
   post '/sessions' do
+      user = User.authenticate(params[:email], params[:password])
     erb :'sessions/welcome_back'
   end
 
