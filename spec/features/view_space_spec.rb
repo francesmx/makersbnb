@@ -1,9 +1,3 @@
-# - Name of the property
-# - Accurate location of the property
-# - Price per night of the proerty
-# - Full description of the property
-# - Availability of the property
-
 require 'spec_helper'
 
 describe 'View Space' do
@@ -16,14 +10,11 @@ describe 'View Space' do
                  available_to: '2017/07/07')
   end
 
-
- it "can view property" do
-   visit '/spaces'
-   click_button 'More'
-   expect(page).to_not have_content "Available Properties"
-   expect(page).to have_content "Beautiful Relaxing Space"
-   expect(page).to have_content "50"
- end
-
-
+  it "can view property" do
+     visit '/spaces'
+     click_link 'More'
+     expect(page).to_not have_content "Available Properties"
+     expect(page).to have_content "Beautiful Relaxing Space"
+     expect(page).to have_content "50"
+  end
 end

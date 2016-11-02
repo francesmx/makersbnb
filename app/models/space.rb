@@ -4,12 +4,12 @@ require 'dm-postgres-adapter'
 class Space
   include DataMapper::Resource
 
-  property :id,           Serial
-  property :name,         String
-  property :description,  Text
-  property :price,        Integer
-  property :available_from,     Date
-  property :available_to,    Date
+  property :id,             Serial
+  property :name,           String
+  property :description,    Text
+  property :price,          Integer
+  property :available_from, Date
+  property :available_to,   Date
 
   def self.search_availability(available_from, available_to)
     all(:available_from.lte => available_from,
