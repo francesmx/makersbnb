@@ -23,6 +23,14 @@ class BnB < Sinatra::Base
     erb :'welcome'
   end
 
+  get '/sessions/new' do
+    erb :'sessions/new'
+  end
+
+  post '/sessions' do
+    erb :'sessions/new'
+  end
+
   get '/spaces' do
     @spaces = Space.all
     erb :spaces
