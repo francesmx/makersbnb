@@ -1,12 +1,15 @@
 ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
+require 'sinatra/flash'
 require_relative 'models/space'
 require_relative 'models/user'
 
 class BnB < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
+
+    register Sinatra::Flash
 
   helpers do
   def current_user
@@ -28,11 +31,16 @@ end
   end
 
   post '/register' do
-    @user = User.create(email: params[:email],
+    @user = User.new(email: params[:email],
         password: params[:password],
         password_confirmation: params[:password_confirmation])
+        if @user.save
       session[:user_id] = @user.id
-    erb :'welcome'
+      erb :'welcome'
+    else
+      flash.now[:errors] = ['Ooops, your password did not match - please try again']
+      erb :'register'
+    end
   end
 
   get '/sessions/new' do
