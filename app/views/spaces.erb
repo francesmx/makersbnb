@@ -21,7 +21,13 @@
         <h3> <%=space.price%> </h3>
         <h3> <%=space.available_from.strftime("%-d %B %Y")%> </h3>
         <h3> <%=space.available_to.strftime("%-d %B %Y")%> </h3>
+
         <a class="space_moreinfo" href="/spaces/<%= space.id %>">More</a>
+
+        <form method ='post' action='/spaces/finalise'>
+          <input name='<% @spaces.name %>' type="submit" value="Request">
+        </form>
+
       </li>
     <% end %>
   <% else %>
