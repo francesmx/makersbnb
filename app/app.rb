@@ -17,11 +17,15 @@ class BnB < Sinatra::Base
   end
 
   get '/register' do
+    @user = User.new
     erb :'register'
   end
 
   post '/register' do
-    erb :'welcome'
+    @user = User.new(email: params[:email],
+        password: params[:password],
+        password_confirmation: params[:password_confirmation])
+      erb :'welcome'
   end
 
   get '/sessions/new' do
@@ -29,7 +33,7 @@ class BnB < Sinatra::Base
   end
 
   post '/sessions' do
-    erb :'sessions/new'
+    erb :'sessions/welcome_back'
   end
 
   get '/spaces' do
