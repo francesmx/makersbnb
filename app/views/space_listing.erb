@@ -1,4 +1,6 @@
-<h1><%= @space.name %></h1>
-<h2><%= @space.description %></h2>
-<p>£<%= @space.price %> per night</p>
-<p>Available from: <%= @space.available_from.strftime("%-d %B %Y") %> to <%= @space.available_to.strftime("%-d %B %Y") %></p>
+<% if @space %>
+  <h1><%= @space.name %></h1>
+  <h2><%= @space.description %></h2>
+  <p>£<%= @space.price %> per night</p>
+  <p>Available from: <%= @space.available_from.strftime("%-d %B %Y") %> to <%= @space.available_to.strftime("%-d %B %Y") %></p>
+<% end %>
