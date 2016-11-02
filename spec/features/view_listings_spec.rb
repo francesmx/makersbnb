@@ -9,20 +9,20 @@ describe 'View Listing' do
     Space.create(name: 'Beautiful Relaxing Space',
                  description: 'have fun at our BnB',
                  price: "50",
-                 available_from: '01/01/2017',
-                 available_to: '07/07/2017')
+                 available_from: '2017/01/01',
+                 available_to: '2017/07/07')
 
     Space.create(name: 'New Space',
                  description: 'have fun at our BnB',
                  price: "50",
-                 available_from: '01/01/2017',
-                 available_to: '07/07/2017')
+                 available_from: '2017/01/01',
+                 available_to: '2017/07/07')
 
    Space.create(name: 'Old Space',
                 description: 'have fun at our BnB',
                 price: "60",
-                available_from: '01/01/2015',
-                available_to: '07/07/2015')
+                available_from: '2015/01/01',
+                available_to: '2015/07/07')
   end
 
   it "can view a list of all available properties" do
@@ -37,8 +37,9 @@ describe 'View Listing' do
     visit('/spaces')
     expect(page).to have_content "Available from"
     expect(page).to have_content "Available to"
-    fill_in :available_from, with: '01/01/2017'
-    fill_in :available_to, with: '07/07/2017'
+    fill_in :available_from, with: '2017/02/01'
+    fill_in :available_to, with: '2017/02/10'
+    click_button 'Submit'
     expect(page).to_not have_content "Old Space"
     expect(page).to have_content "New Space"
   end
