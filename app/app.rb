@@ -29,10 +29,15 @@ class BnB < Sinatra::Base
     redirect '/spaces'
   end
 
-  post '/spaces/filter' do
-    # session[:check_in] = params[:check_in]
-    # session[:check_out] = params[:check_out]
-    redirect '/spaces'
+  get '/spaces/filter_dates' do
+    @spaces = Space.search_availability(session[:available_from], session[:available_to])
+    erb :spaces
+  end
+
+  post '/spaces/filter_dates' do
+    session[:available_from] = Date.parse(params[:available_from])
+    session[:available_to] = Date.parse(params[:available_to])
+    redirect '/spaces/filter_dates'
   end
 
   # start the server if ruby file executed directly
