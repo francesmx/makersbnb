@@ -34,13 +34,13 @@ end
     @user = User.new(email: params[:email],
         password: params[:password],
         password_confirmation: params[:password_confirmation])
-        if @user.save
-      session[:user_id] = @user.id
-      erb :'welcome'
-    else
-      flash.now[:errors] = ['Ooops, your password did not match - please try again']
-      erb :'register'
-    end
+          if @user.save
+            session[:user_id] = @user.id
+            erb :'welcome'
+          else
+            flash.now[:errors] = ['Ooops, your password did not match - please try again']
+            erb :'register'
+          end
   end
 
   get '/sessions/new' do
