@@ -6,6 +6,10 @@ require_relative 'models/space'
 require_relative 'models/user'
 
 class BnB < Sinatra::Base
+
+
+use Rack::MethodOverride
+
   enable :sessions
   set :session_secret, 'super secret'
 
@@ -58,11 +62,12 @@ end
         flash.now[:errors] = ['The email or password is incorrect']
         erb :'sessions/new'
       end
-  
-  delete '/sessions' do
- session[:user_id] = nil
- flash.keep[:notice] = 'goodbye!'
- redirect to '/home'
+    end
+
+    delete '/sessions' do
+    session[:user_id] = nil
+    flash.keep[:notice] = 'Goodbye!'
+    redirect to '/home'
  end
 
   get '/spaces' do
