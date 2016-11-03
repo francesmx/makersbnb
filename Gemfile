@@ -6,6 +6,7 @@ ruby '2.3.1'
   gem 'rerun'
   gem 'dm-postgres-adapter'
   gem 'data_mapper'
+  gem 'sinatra-flash'
 
 
 group :test do
