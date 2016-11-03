@@ -7,7 +7,7 @@
 
 
 <% end %>
-<form method='post' action='/requests/new'>
+<form method='post' action='/request/new'>
   <label>
     Check In:
     <input type="text" name="check_in" id="check_in" placeholder="Check In">
@@ -16,5 +16,6 @@
     Check Out:
     <input type="text" name="check_out" placeholder="Check Out">
   </label>
+  <input type="hidden" name="space_id" value="<%= @space.id %>">
   <button type="submit">Request Booking</button>
 </form>

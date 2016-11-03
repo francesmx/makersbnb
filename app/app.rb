@@ -73,6 +73,8 @@ end
     redirect '/spaces/finalise'
   end
 
+
+
   get '/spaces/new' do
     erb :'spaces/new'
   end
@@ -111,10 +113,11 @@ end
 
   end
 
-  post '/requests/new' do
-    session[:check_in] = params[:check_in]
-    session[:check_out] = params[:check_in]
-    redirect '/requests'
+  post '/request/new' do
+    session[:check_in] = Date.parse(params[:check_in])
+    session[:check_out] = Date.parse(params[:check_in])
+    session[:space_id] = params[:space_id]
+    redirect '/request/finalise'
   end
 
   get '/requests' do
@@ -124,6 +127,13 @@ end
   get '/requests/:id' do
     # @request = Request.get(params[:id])
     erb :'request'
+  end
+
+  get '/request/finalise' do
+    @check_in = session[:check_in]
+    @check_out = session[:check_out]
+    @space = Space.get(session[:space_id])
+    erb :finalise
   end
 
   # start the server if ruby file executed directly

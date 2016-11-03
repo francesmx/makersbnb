@@ -3,9 +3,8 @@ require 'spec_helper'
 describe 'View Listing' do
 
   before(:each) do
-    create_user
+    create_user_spaces
     sign_in
-    create_spaces    
   end
 
   it "can view a list of all available properties" do

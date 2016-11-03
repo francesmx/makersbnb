@@ -1,5 +1,17 @@
-def create_spaces
-  host = User.get(1)
+def create_user_spaces
+  host = User.create(
+    first_name: 'batman',
+    last_name: 'wayne',
+    email: "batman@hotmail.com",
+    password: "123",
+    password_confirmation: "123")
+
+  User.create(
+    first_name: 'homeless',
+    last_name: 'homeless',
+    email: "homeless@hotmail.com",
+    password: "123",
+    password_confirmation: "123")
 
   Space.create(name: 'Beautiful Relaxing Space',
                description: 'have fun at our BnB',
@@ -31,18 +43,9 @@ def sign_in
   click_button 'Sign in'
 end
 
-def create_user
-    User.create(
-      first_name: 'batman',
-      last_name: 'wayne',
-      email: "batman@hotmail.com",
-      password: "123",
-      password_confirmation: "123")
-end
-
 
 def request_booking
-  create_spaces
+  create_user_spaces
   visit '/spaces/1'
   expect(current_path).to eq '/spaces/1'
   fill_in 'check_in', with: '2016/11/01'

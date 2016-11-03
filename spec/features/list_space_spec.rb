@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature "list a Space" do
   it "As a host, so my space is available for rent, I can list a single space." do
-    create_user
+    create_user_spaces
     sign_in
     visit "/spaces/new"
     fill_in :name, with: 'Beautiful Relaxing Space'
