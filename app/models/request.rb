@@ -1,7 +1,9 @@
 class Request
   include DataMapper::Resource
 
-  property :requested_date, Date
+  property :id, Serial
+  property :check_in, Date
+  property :check_out,   Date
 
 
   belongs_to :space

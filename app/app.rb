@@ -82,7 +82,8 @@ end
                  description: params[:description],
                  price: params[:price],
                  available_from: params[:available_from],
-                 available_to: params[:available_to])
+                 available_to: params[:available_to],
+                 user: current_user)
     redirect '/spaces'
   end
 
