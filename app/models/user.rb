@@ -18,6 +18,9 @@ class User
   validates_presence_of :email
   validates_confirmation_of :password
 
+  has n, :spaces
+  has n, :bookings
+
   def self.authenticate(email, password)
     user = first(email: email)
 

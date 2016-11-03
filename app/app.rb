@@ -1,6 +1,7 @@
 ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
+require_relative 'data_mapper_setup'
 require 'sinatra/flash'
 require 'sinatra/partial'
 require_relative 'models/space'
@@ -27,7 +28,7 @@ class BnB < Sinatra::Base
   get '/home' do
      erb :'register'
   end
-
+# --- REGISTER ----
   get '/register' do
     @user = User.new
     erb :'register'
@@ -39,6 +40,7 @@ class BnB < Sinatra::Base
                      email: params[:email],
                      password: params[:password],
                      password_confirmation: params[:password_confirmation])
+
       if @user.save
         session[:user_id] = @user.id
         erb :'welcome'
@@ -48,6 +50,7 @@ class BnB < Sinatra::Base
       end
   end
 
+# --- SIGN IN ----
   get '/sessions/new' do
     erb :'sessions/new'
   end
@@ -69,6 +72,8 @@ class BnB < Sinatra::Base
     redirect to '/home'
  end
 
+# --- ADD + LIST SPACE ----
+
   get '/spaces' do
     @spaces = Space.all
     erb :spaces
@@ -84,7 +89,8 @@ class BnB < Sinatra::Base
                  description: params[:description],
                  price: params[:price],
                  available_from: params[:available_from],
-                 available_to: params[:available_to])
+                 available_to: params[:available_to],
+                 user: current_user)
     redirect '/spaces'
   else
   flash.now[:errors] = ['Please register or login to list a space']
@@ -106,6 +112,42 @@ class BnB < Sinatra::Base
   get '/spaces/:id' do
     @space = Space.get(params[:id])
     erb :'space_listing'
+  end
+
+# --- REQUESTS ----
+
+  get '/requests' do
+    @user = current_user
+    erb :requests
+  end
+
+  post '/request/new' do
+    session[:check_in] = Date.parse(params[:check_in])
+    session[:check_out] = Date.parse(params[:check_in])
+    session[:space_id] = params[:space_id]
+    redirect '/request/finalise'
+  end
+
+  get '/requests/:id' do
+    # @request = Booking.get(params[:id])
+    erb :'request'
+  end
+
+  get '/request/finalise' do
+    @check_in = session[:check_in]
+    @check_out = session[:check_out]
+    @space = Space.get(session[:space_id])
+    erb :finalise
+  end
+
+  get '/request/confirmation' do
+    Booking.create(check_in: session[:check_in],
+                   check_out: session[:check_out],
+                   status: "unconfirmed",
+                   space: Space.get(session[:space_id]),
+                   user: current_user)
+    redirect '/requests'
+
   end
 
   # start the server if ruby file executed directly
