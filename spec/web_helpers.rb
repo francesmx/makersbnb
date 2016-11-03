@@ -38,7 +38,7 @@ end
 
 def sign_in
   visit '/sessions/new'
-  fill_in :email, with: "batman@hotmail.com"
+  fill_in :email, with: "homeless@hotmail.com"
   fill_in :password, with: "123"
   click_button 'Sign in'
 end
