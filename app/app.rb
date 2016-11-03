@@ -7,6 +7,8 @@ require_relative 'models/space'
 require_relative 'models/user'
 
 class BnB < Sinatra::Base
+
+  use Rack::MethodOverride
   enable :sessions
   register Sinatra::Flash
   register Sinatra::Partial
@@ -14,10 +16,8 @@ class BnB < Sinatra::Base
   set :partial_template_engine, :erb
   enable :partial_underscores
 
-  helpers do
-    def current_user
-      @current_user ||= User.get(session[:user_id])
-    end
+  def current_user
+    @current_user ||= User.get(session[:user_id])
   end
 
   get '/' do
@@ -61,7 +61,13 @@ class BnB < Sinatra::Base
         flash.now[:errors] = ['The email or password is incorrect']
         erb :'sessions/new'
       end
-  end
+    end
+
+    delete '/sessions' do
+    session[:user_id] = nil
+    flash.keep[:notice] = 'Goodbye!'
+    redirect to '/home'
+ end
 
   get '/spaces' do
     @spaces = Space.all
@@ -73,12 +79,17 @@ class BnB < Sinatra::Base
   end
 
   post '/spaces' do
+    if current_user
     Space.create(name: params[:name],
                  description: params[:description],
                  price: params[:price],
                  available_from: params[:available_from],
                  available_to: params[:available_to])
     redirect '/spaces'
+  else
+  flash.now[:errors] = ['Please register or login to list a space']
+    erb :'register'
+  end
   end
 
   get '/spaces/filter_dates' do
