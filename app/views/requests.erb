@@ -1,4 +1,14 @@
 <h1>Requests I've made</h1>
+<ul>
+<% @user.requests.each do |request| %>
+  <li>
+    <%= request.space.name %>
+    <%= request.check_in %>
+    <%= request.check_out %>
+  </li>
+<% end %>
+</ul>
+
 
 <h1>Requests I've received</h1>
 <h2>Request 1</h2>

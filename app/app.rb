@@ -114,6 +114,7 @@ end
   end
 
   post '/request/new' do
+
     session[:check_in] = Date.parse(params[:check_in])
     session[:check_out] = Date.parse(params[:check_in])
     session[:space_id] = params[:space_id]
@@ -121,6 +122,7 @@ end
   end
 
   get '/requests' do
+    @user = current_user
     erb :requests
   end
 
@@ -134,6 +136,15 @@ end
     @check_out = session[:check_out]
     @space = Space.get(session[:space_id])
     erb :finalise
+  end
+
+  get '/request/confirmation' do
+    request = Request.create(check_in: session[:check_in],
+                  check_out: session[:check_out],
+                  space: Space.get(session[:space_id]),
+                  user: current_user)
+    redirect '/requests'
+
   end
 
   # start the server if ruby file executed directly
