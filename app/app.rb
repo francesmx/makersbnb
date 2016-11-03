@@ -31,16 +31,18 @@ end
   end
 
   post '/register' do
-    @user = User.new(email: params[:email],
-        password: params[:password],
-        password_confirmation: params[:password_confirmation])
-          if @user.save
-            session[:user_id] = @user.id
-            erb :'welcome'
-          else
-            flash.now[:errors] = ['Ooops, your password did not match - please try again']
-            erb :'register'
-          end
+    @user = User.new(first_name: params[:first_name],
+                     last_name: params[:last_name],
+                     email: params[:email],
+                     password: params[:password],
+                     password_confirmation: params[:password_confirmation])
+      if @user.save
+        session[:user_id] = @user.id
+        erb :'welcome'
+      else
+        flash.now[:errors] = ['Ooops, your password did not match - please try again']
+        erb :'register'
+      end
   end
 
   get '/sessions/new' do
