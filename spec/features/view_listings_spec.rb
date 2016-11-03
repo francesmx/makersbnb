@@ -27,7 +27,6 @@ describe 'View Listing' do
     expect(page).to have_content "Available Properties"
     expect(page).to have_content 'Beautiful Relaxing Space'
     expect(page).to have_content 'have fun at our BnB'
-    expect(page).to have_content "More"
   end
 
   it "be able to filter properties by date availability" do

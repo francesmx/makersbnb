@@ -12,7 +12,7 @@ describe 'View Space' do
 
   it "can view property" do
      visit '/spaces'
-     click_link 'More'
+     click_link 'Beautiful Relaxing Space'
      expect(page).to_not have_content "Available Properties"
      expect(page).to have_content "Beautiful Relaxing Space"
      expect(page).to have_content "50"

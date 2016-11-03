@@ -16,11 +16,12 @@
   <% if @spaces %>
     <% @spaces.each do |space| %>
       <li class="space_list_item">
-        <h2> <%=space.name%> </h2>
-        <h3> <%=space.description%> </h3>
-        <h3> £<%=space.price%> per night </h3>
-        <h3> Available from <%=space.available_from.strftime("%-d %B %Y")%> to <%=space.available_to.strftime("%-d %B %Y")%> </h3>
-        <a class="space_moreinfo" href="/spaces/<%= space.id %>">More</a>
+        <a class="space_moreinfo" href="/spaces/<%= space.id %>">
+          <p class="space_price"> £<%=space.price%> per night </p>
+          <p class="space_name"> <%=space.name%> </p>
+          <p> <%=space.description%> </p>
+          <p> Available <%=space.available_from.strftime("%-d %B %Y")%> to <%=space.available_to.strftime("%-d %B %Y")%> </p>
+        </a>
       </li>
     <% end %>
   <% else %>
