@@ -12,10 +12,10 @@
   <button type="submit">Submit</button>
 </form>
 
-<ul>
+<ul id="spaces">
   <% if @spaces %>
     <% @spaces.each do |space| %>
-      <li>
+      <li class="space_list_item">
         <h2> <%=space.name%> </h2>
         <h3> <%=space.description%> </h3>
         <h3> £<%=space.price%> per night </h3>

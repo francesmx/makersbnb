@@ -37,6 +37,19 @@ body {
 #signout {
   display: inline;
 }
+#spaces {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+.space_list_item {
+  display: block;
+  border: 3px solid #999;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
 
 footer {
   position: absolute;
