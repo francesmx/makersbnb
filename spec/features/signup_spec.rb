@@ -16,7 +16,7 @@ feature "user sign-up" do
   scenario 'with a password that does not match' do
     visit "/register"
     fill_in :first_name, with: 'catwoman'
-    fill_in :first_name, with: 'womancat'
+    fill_in :last_name, with: 'womancat'
     fill_in :email, with: "catwoman@hotmail.com"
     fill_in :password, with: "123"
     fill_in :password_confirmation, with: "567"
