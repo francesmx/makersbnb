@@ -128,8 +128,9 @@ class BnB < Sinatra::Base
     redirect '/request/finalise'
   end
 
-  get '/requests/:id' do
-    # @request = Booking.get(params[:id])
+  get '/requests/received/:id' do
+    @confirmed_bookings = @user.spaces.each {|space| }
+    @booking = Booking.get(params[:id])
     erb :'request'
   end
 
@@ -147,7 +148,20 @@ class BnB < Sinatra::Base
                    space: Space.get(session[:space_id]),
                    user: current_user)
     redirect '/requests'
+  end
 
+  # -- BOOKINGS --
+
+  get '/bookings/confirm/:id' do
+    @booking = Booking.get(params[:id])
+    Booking.update(:status => "confirmed")
+    redirect '/requests'
+  end
+
+  get '/bookings/reject/:id' do
+    @booking = Booking.get(params[:id])
+    Booking.update(:status => "rejected")
+    redirect '/requests'
   end
 
   # start the server if ruby file executed directly

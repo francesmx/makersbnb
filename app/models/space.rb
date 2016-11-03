@@ -16,4 +16,5 @@ class Space
         :available_to.gte => available_to)
   end
 
+
 end
