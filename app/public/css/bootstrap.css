@@ -38,6 +38,38 @@ body {
   display: inline;
 }
 
+#spaces {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+
+#spaces a {
+   text-decoration: none;
+   color: #333;
+}
+
+.space_list_item {
+  display: block;
+  border: 3px solid #999;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.space_list_item:hover {
+  background-color: #eee;
+}
+
+.space_name {
+  font-size: 130%;
+  font-weight: bold;
+}
+
+.space_price {
+  float: right;
+}
+
 footer {
   position: absolute;
   left: 0;
