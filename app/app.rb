@@ -15,11 +15,11 @@ use Rack::MethodOverride
 
     register Sinatra::Flash
 
-  helpers do
+
   def current_user
     @current_user ||= User.get(session[:user_id])
   end
-end
+
 
   get '/' do
     erb :'home'
@@ -80,12 +80,17 @@ end
   end
 
   post '/spaces' do
+    if current_user
     Space.create(name: params[:name],
                  description: params[:description],
                  price: params[:price],
                  available_from: params[:available_from],
                  available_to: params[:available_to])
     redirect '/spaces'
+  else
+  flash.now[:errors] = ['Please register or login to list a space']
+    erb :'register'
+  end
   end
 
   get '/spaces/filter_dates' do
