@@ -123,8 +123,8 @@ end
   end
 
   get '/request/confirmation' do
-    booking = Booking.create(check_in: session[:check_in],
-                  check_out: session[:check_out],
+    booking = Booking.create(check_in: Data.parse(session[:check_in]),
+                  check_out: Date.parse(session[:check_out]),
                   status: "unconfirmed",
                   space: Space.get(session[:space_id]),
                   user: current_user)

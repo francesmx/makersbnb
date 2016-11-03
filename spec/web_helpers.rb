@@ -43,6 +43,20 @@ def sign_in
   click_button 'Sign in'
 end
 
+def create_booking
+  Booking.create(check_in: Date.parse("2017/01/01"),
+                check_out: Date.parse("2017/01/01"),
+                status: "unconfirmed",
+                space: Space.get(1),
+                user: User.get(2))
+end
+
+def sign_in_host
+  visit '/sessions/new'
+  fill_in :email, with: "batman@hotmail.com"
+  fill_in :password, with: "123"
+  click_button 'Sign in'
+end
 
 def request_booking
   create_user_spaces
