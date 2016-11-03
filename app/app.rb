@@ -68,6 +68,7 @@ class BnB < Sinatra::Base
     erb :'space_listing'
   end
 
+<<<<<<< HEAD
   post '/spaces/request' do
     Request.create(requested_date: params[:requested_date])
   end
@@ -75,6 +76,22 @@ class BnB < Sinatra::Base
   get '/spaces/request' do
 
   end
+=======
+  post '/requests/new' do
+    session[:check_in] = params[:check_in]
+    session[:check_out] = params[:check_in]
+    redirect '/requests'
+  end
+
+  get '/requests' do
+    erb :requests
+  end
+
+  get '/requests/:id' do
+    # @request = Request.get(params[:id])
+    erb :'request'
+>>>>>>> feature_05
+
 
   # start the server if ruby file executed directly
   run! if app_file == $0
