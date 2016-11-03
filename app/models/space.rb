@@ -8,7 +8,7 @@ class Space
   property :available_from, Date
   property :available_to,   Date
 
-  has n, :requests
+  has n, :bookings
   belongs_to :user
 
   def self.search_availability(available_from, available_to)

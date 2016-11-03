@@ -1,10 +1,10 @@
 <h1>Requests I've made</h1>
 <ul>
-<% @user.requests.each do |request| %>
+<% @user.bookings.each do |booking| %>
   <li>
-    <%= request.space.name %>
-    <%= request.check_in %>
-    <%= request.check_out %>
+    <%= booking.space.name %>
+    <%= booking.check_in %>
+    <%= booking.check_out %>
   </li>
 <% end %>
 </ul>

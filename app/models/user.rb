@@ -19,7 +19,7 @@ class User
   validates_confirmation_of :password
 
   has n, :spaces
-  has n, :requests
+  has n, :bookings
 
   def self.authenticate(email, password)
     user = first(email: email)

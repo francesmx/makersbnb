@@ -24,7 +24,7 @@ end
   get '/home' do
      erb :'register'
   end
-
+# --- REGISTER ----
   get '/register' do
     @user = User.new
     erb :'register'
@@ -43,6 +43,7 @@ end
           end
   end
 
+# --- SIGN IN ----
   get '/sessions/new' do
     erb :'sessions/new'
   end
@@ -58,22 +59,12 @@ end
       end
   end
 
+# --- ADD + LIST SPACE ----
+
   get '/spaces' do
     @spaces = Space.all
     erb :spaces
   end
-
-  get '/spaces/finalise' do
-    @spaces = Space.all
-    erb :'spaces/finalise'
-  end
-
-  post '/spaces/finalise' do
-    #session[:name] = @spaces.name
-    redirect '/spaces/finalise'
-  end
-
-
 
   get '/spaces/new' do
     erb :'spaces/new'
@@ -105,29 +96,22 @@ end
     erb :'space_listing'
   end
 
-  post '/spaces/request' do
-    Request.create(requested_date: params[:requested_date])
-  end
-
-  get '/spaces/request' do
-
-  end
-
-  post '/request/new' do
-
-    session[:check_in] = Date.parse(params[:check_in])
-    session[:check_out] = Date.parse(params[:check_in])
-    session[:space_id] = params[:space_id]
-    redirect '/request/finalise'
-  end
+# --- REQUESTS ----
 
   get '/requests' do
     @user = current_user
     erb :requests
   end
 
+  post '/request/new' do
+    session[:check_in] = Date.parse(params[:check_in])
+    session[:check_out] = Date.parse(params[:check_in])
+    session[:space_id] = params[:space_id]
+    redirect '/request/finalise'
+  end
+
   get '/requests/:id' do
-    # @request = Request.get(params[:id])
+    # @request = Booking.get(params[:id])
     erb :'request'
   end
 
@@ -139,8 +123,9 @@ end
   end
 
   get '/request/confirmation' do
-    request = Request.create(check_in: session[:check_in],
+    booking = Booking.create(check_in: session[:check_in],
                   check_out: session[:check_out],
+                  status: "unconfirmed",
                   space: Space.get(session[:space_id]),
                   user: current_user)
     redirect '/requests'

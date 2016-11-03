@@ -51,6 +51,4 @@ def request_booking
   fill_in 'check_in', with: '2016/11/01'
   fill_in('check_out', with: '2016/11/08')
   click_button "Request Booking"
-  expect(current_path).to eq '/requests'
-  expect(page).to have_content("Requests I've made")
 end
