@@ -9,6 +9,7 @@ class Space
   property :available_to,   Date
 
   has n, :requests
+  belongs_to :user
 
   def self.search_availability(available_from, available_to)
     all(:available_from.lte => available_from,
