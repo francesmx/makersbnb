@@ -111,7 +111,7 @@ class BnB < Sinatra::Base
 
   get '/spaces/:id' do
     @space = Space.get(params[:id])
-    erb :'space_listing'
+    erb :'space'
   end
 
 # --- REQUESTS ----
