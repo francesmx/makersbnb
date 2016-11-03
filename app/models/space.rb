@@ -1,11 +1,9 @@
 require 'data_mapper'
 require 'dm-postgres-adapter'
-require_relative 'request.rb'
+require_relative 'request'
 
 class Space
   include DataMapper::Resource
-
-  has n, :requests
 
   property :id,             Serial
   property :name,           String
@@ -13,6 +11,8 @@ class Space
   property :price,          Integer
   property :available_from, Date
   property :available_to,   Date
+
+  has n, :requests, through: Resource
 
   def self.search_availability(available_from, available_to)
     all(:available_from.lte => available_from,
