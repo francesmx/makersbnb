@@ -1,8 +1,7 @@
 ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
-require_relative 'models/space'
-require_relative 'models/request'
+require_relative 'data_mapper_setup'
 
 class BnB < Sinatra::Base
   enable :sessions
@@ -35,7 +34,7 @@ class BnB < Sinatra::Base
   end
 
   post '/spaces/finalise' do
-    session[:name] = @spaces.name
+    #session[:name] = @spaces.name
     redirect '/spaces/finalise'
   end
 
@@ -89,7 +88,7 @@ class BnB < Sinatra::Base
   get '/requests/:id' do
     # @request = Request.get(params[:id])
     erb :'request'
-
+  end
 
   # start the server if ruby file executed directly
   run! if app_file == $0

@@ -14,8 +14,7 @@ feature "request booking" do
     visit '/spaces/finalise'
     fill_in :check_in, with: '03/01/2017'
     fill_in :check_out, with: '06/01/2017'
-    fill_in :number_of_guests, with: 2
-    click_button 'Confirm booking'
+    click_button 'Request Booking'
     expect(page).to have_content 'Thank you! Your request is currently awaiting approval from the host.'
   end
 

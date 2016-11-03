@@ -1,7 +1,3 @@
-require 'data_mapper'
-require 'dm-postgres-adapter'
-require_relative 'space'
-
 class Request
   include DataMapper::Resource
 
@@ -9,9 +5,5 @@ class Request
   property :requested_date, Date
 
 
-  belongs_to :space, through: Resource
+  belongs_to :space
 end
-
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://localhost/makersbnb_#{ENV['RACK_ENV']}")
-DataMapper.finalize
-DataMapper.auto_upgrade!
