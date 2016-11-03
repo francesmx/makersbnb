@@ -3,18 +3,15 @@
   <h2><%= @space.description %></h2>
   <p>£<%= @space.price %> per night</p>
   <p>Available from: <%= @space.available_from.strftime("%-d %B %Y") %> to <%= @space.available_to.strftime("%-d %B %Y") %></p>
-
-
-
 <% end %>
 <form method='post' action='/request/new'>
   <label>
     Check In:
-    <input type="text" name="check_in" id="check_in" placeholder="Check In">
+    <input type="text" name="check_in" id="available_from" placeholder="Check In">
   </label>
   <label>
     Check Out:
-    <input type="text" name="check_out" placeholder="Check Out">
+    <input type="text" name="check_out" id="available_to" placeholder="Check Out">
   </label>
   <input type="hidden" name="space_id" value="<%= @space.id %>">
   <button type="submit">Request Booking</button>
