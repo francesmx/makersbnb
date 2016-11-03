@@ -3,23 +3,8 @@ require 'spec_helper'
 describe 'View Listing' do
 
   before(:each) do
-    Space.create(name: 'Beautiful Relaxing Space',
-                 description: 'have fun at our BnB',
-                 price: "50",
-                 available_from: '2017/01/01',
-                 available_to: '2017/07/07')
-
-    Space.create(name: 'New Space',
-                 description: 'have fun at our BnB',
-                 price: "50",
-                 available_from: '2017/01/01',
-                 available_to: '2017/07/07')
-
-   Space.create(name: 'Old Space',
-                description: 'have fun at our BnB',
-                price: "60",
-                available_from: '2015/01/01',
-                available_to: '2015/07/07')
+    create_user_spaces
+    sign_in
   end
 
   it "can view a list of all available properties" do
