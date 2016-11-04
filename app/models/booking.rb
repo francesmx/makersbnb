@@ -9,4 +9,16 @@ class Booking
 
   belongs_to :space
   belongs_to :user
+
+  def confirmed?
+    self.status == "confirmed"
+  end
+
+  def rejected?
+    self.status == "rejected"
+  end
+
+  def unconfirmed?
+    self.status == "unconfirmed"
+  end
 end

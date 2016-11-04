@@ -1,4 +1,7 @@
-<h1>Name of the request</h1>
+<h1>Request</h1>
+<p><%= @booking.user.first_name %> <%= @booking.user.last_name %> has requested to book <%= @booking.space.name %>.</p>
+Check in: <%= @booking.check_in %>
+Check out: <%= @booking.check_out %>
 <p>Details of the request</p>
-<a href="/requests" id="accept_request">Accept request</a>
-<a href="/requests" id="reject_request">Reject request</a>
+<a href="/bookings/confirm/<%= @booking.id %>" id="accept_request">Accept request</a>
+<a href="/bookings/reject/<%= @booking.id %>" id="reject_request">Reject request</a>

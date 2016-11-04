@@ -1,0 +1,35 @@
+<h2>Confirmed bookings:</h2>
+<ul>
+
+<% @user.spaces.each do |space| %>
+  <% space.bookings.each do |booking| %>
+    <% if booking.confirmed? %>
+      <li>
+        <a href="requests/received/<%= booking.id %>" id="received_request_<%= booking.id %>">
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %> is booked in at <%= booking.space.name %>.</p>
+          <%= booking.check_in %>
+          <%= booking.check_out %>
+        </a>
+      </li>
+    <% end %>
+  <% end %>
+<% end %>
+</ul>
+
+<h2>Rejected bookings:</h2>
+
+<ul>
+<% @user.spaces.each do |space| %>
+  <% space.bookings.each do |booking| %>
+    <% if booking.rejected? %>
+      <li>
+        <a href="requests/received/<%= booking.id %>" id="received_request_<%= booking.id %>">
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %> at <%= booking.space.name %>.</p>
+          <%= booking.check_in %>
+          <%= booking.check_out %>
+        </a>
+      </li>
+    <% end %>
+  <% end %>
+<% end %>
+</ul>
