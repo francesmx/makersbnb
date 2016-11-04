@@ -9,70 +9,14 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
   background-image: url('/images/bg/hamilton-island.jpg');
-
   background-size: 100%;
   position: relative;
   min-height: 100%;
-  font-size: 16px;
+  font-size: 120%;
 }
 body {
   margin: auto;
   width: 75%;
-}
-
-#logo {
-  margin-top: 20px;
-}
-#toplinks {
-  font-size: 16px;
-  text-align: right;
-  float: right;
-  margin-top: 20px;
-}
-
-#toplinks a {
-  padding-right: 5px;
-}
-
-#signout {
-  display: inline;
-}
-
-#spaces {
-   list-style-type: none;
-   margin: 0;
-   padding: 0;
-}
-
-#spaces a {
-   text-decoration: none;
-   color: #333;
-}
-
-.space_list_item {
-  display: block;
-  border: 3px solid #999;
-  padding: 20px;
-  border-radius: 20px;
-  margin-top: 20px;
-}
-
-.space_list_item:hover {
-  background-color: #eee;
-}
-
-.space_name {
-  font-size: 130%;
-  font-weight: bold;
-}
-
-.space_price {
-  float: right;
-}
-
-.ui-datepicker{
-  background-color: white;
-  padding: 10px;
 }
 
 footer {
@@ -109,7 +53,8 @@ section {
   padding: 30px;
   background-color: white;
   opacity: 0.9;
-  color: black;
+  color: #333;
+  border-radius: 8px;main_section
 }
 
 audio,
@@ -1180,6 +1125,9 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
 }
 a {
   color: #337ab7;

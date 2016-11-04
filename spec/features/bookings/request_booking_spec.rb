@@ -8,7 +8,7 @@ feature "request booking" do
     find('ul > li:first-child > a').click()
     fill_in :check_in, with: '2017/03/01'
     fill_in :check_out, with: '2017/06/01'
-    click_button 'Request Booking'
+    click_button 'Request booking'
     expect(current_path).to eq '/request/finalise'
     expect(page).to have_content 'Finalise your booking!'
     click_link 'Confirm'

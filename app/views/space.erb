@@ -1,18 +1,19 @@
 <% if @space %>
+  <div id="room_pic">
+    <img src="/images/hotel-room.jpg">
+  </div>
   <h1><%= @space.name %></h1>
-  <h2><%= @space.description %></h2>
+  <p class="lead"><%= @space.description %></p>
   <p>£<%= @space.price %> per night</p>
-  <p>Available from: <%= @space.available_from.strftime("%-d %B %Y") %> to <%= @space.available_to.strftime("%-d %B %Y") %></p>
+  <p>Available from <%= @space.available_from.strftime("%-d %B %Y") %> to <%= @space.available_to.strftime("%-d %B %Y") %></p>
 <% end %>
-<form method='post' action='/request/new'>
-  <label>
-    Check In:
-    <input type="text" name="check_in" id="available_from" placeholder="Check In">
-  </label>
-  <label>
-    Check Out:
-    <input type="text" name="check_out" id="available_to" placeholder="Check Out">
-  </label>
+<form class="form-inline" method='post' action='/request/new'>
   <input type="hidden" name="space_id" value="<%= @space.id %>">
-  <button type="submit">Request Booking</button>
+  <div class="form-group">
+    <label class="sr-only" for="check_in">Check in</label>
+    <input class="form-control" type="text" name="check_in" id="available_from" placeholder="Check in">
+    <label for="check_out"> to</label>
+    <input class="form-control" type="text" name="check_out" id="available_to" placeholder="Check out">
+  </div>
+  <button type="submit" class="btn btn-primary">Request booking</button>
 </form>

@@ -1,0 +1,109 @@
+#logo {
+  margin-top: 20px;
+}
+
+#toplinks {
+  font-size: 16px;
+  text-align: right;
+  float: right;
+  margin-top: 20px;
+}
+
+#toplinks a {
+  padding-right: 5px;
+}
+
+#signout {
+  display: inline;
+}
+
+#spaces {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+
+#spaces a {
+   text-decoration: none;
+   color: #333;
+}
+
+#available_from {
+  margin: 10px;
+  height: 40px;
+  width: 120px;
+}
+
+#available_to {
+  margin: 10px;
+  height: 40px;
+  width: 120px;
+}
+
+#room_pic img {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  float: right;
+  margin: 20px;
+}
+.main_page_heading {
+  text-align: center;
+}
+
+.space_list_item {
+  display: block;
+  border: 3px solid #999;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.space_list_item:hover {
+  background-color: #eee;
+}
+
+.space_name {
+  font-size: 130%;
+  font-weight: bold;
+}
+
+.space_price {
+  float: right;
+}
+
+#room_details p {
+  font-size: 16px;
+}
+
+#list_space_button {
+  margin: auto;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  display: block;
+  border: 1px solid #333;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  text-align:center;
+  line-height:40px;
+  width:180px;
+  height:40px;
+  font-size:120%;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7abcff+0,60abf8+44,4096ee+100;Blue+3D+%2314 */
+  background: rgb(122,188,255); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(122,188,255,1) 0%, rgba(96,171,248,1) 44%, rgba(64,150,238,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(122,188,255,1) 0%,rgba(96,171,248,1) 44%,rgba(64,150,238,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
+}
+
+#list_space_button:hover {
+  color: #333;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
+  background: rgb(238,238,238); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+}
