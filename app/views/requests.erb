@@ -5,6 +5,7 @@
     <%= booking.space.name %>
     <%= booking.check_in %>
     <%= booking.check_out %>
+    <p> Your booking is <%= booking.status %> </p>
   </li>
 <% end %>
 </ul>
@@ -15,31 +16,15 @@
 
 <% @user.spaces.each do |space| %>
   <% space.bookings.each do |booking| %>
-    <li>
-      <a href="requests/received/<%= booking.id %>" id="received_request_<%= booking.id %>">
-        <p><%= booking.user.first_name %> <%= booking.user.last_name %> has requested to book <%= booking.space.name %>.</p>
-        <%= booking.check_in %>
-        <%= booking.check_out %>
-      </a>
-    </li>
+    <% if booking.unconfirmed? %>
+      <li>
+        <a href="requests/received/<%= booking.id %>" id="received_request_<%= booking.id %>">
+          <p><%= booking.user.first_name %> <%= booking.user.last_name %> has requested to book <%= booking.space.name %>.</p>
+          <%= booking.check_in %>
+          <%= booking.check_out %>
+        </a>
+      </li>
+    <% end %>
   <% end %>
 <% end %>
 </ul>
-
-
-<h2>Confirmed bookings:</h2>
-<ul>
-
-<% @user.spaces.each do |space| %>
-  <% space.bookings.each do |booking| %>
-    <li>
-      <a href="requests/received/<%= booking.id %>" id="received_request_<%= booking.id %>">
-        <p><%= booking.user.first_name %> <%= booking.user.last_name %> has requested to book <%= booking.space.name %>.</p>
-        <%= booking.check_in %>
-        <%= booking.check_out %>
-      </a>
-    </li>
-  <% end %>
-<% end %>
-</ul>
-<p>Booking request has been confirmed</p>
