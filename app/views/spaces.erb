@@ -1,15 +1,17 @@
-<h1> Available Properties </h1>
+<h1 class="main_page_heading">Book a Space</h1>
 
-<form method='post' action='/spaces/filter_dates'>
-  <label>
-    Available from:
-    <input type="text" name="available_from" id="available_from" placeholder="Check In">
-  </label>
-  <label>
-    Available to:
-    <input type="text" name="available_to" id="available_to" placeholder="Check Out">
-  </label>
-  <button type="submit">Submit</button>
+<a href="/spaces/new" id="list_space_button">List a space</a>
+
+<form class="form-inline" method='post' action='/spaces/filter_dates'>
+  <div class="form-group">
+    <label for="available_from">Available from</label>
+    <input class="form-control" type="text" name="available_from" id="available_from" placeholder="Check in">
+  </div>
+  <div class="form-group">
+    <label for="available_to"> to</label>
+    <input class="form-control" type="text" name="available_to" id="available_to" placeholder="Check out">
+  <button class="btn btn-default" type="submit">List spaces</button>
+  </div>
 </form>
 
 <ul id="spaces">
