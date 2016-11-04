@@ -4,10 +4,11 @@ describe 'View Listing' do
 
   before(:each) do
     create_user_spaces
-    sign_in
+
   end
 
   it "can view a list of all available properties" do
+    sign_in
     visit('/spaces')
     expect(page).to have_content "Book a Space"
     expect(page).to have_content 'Beautiful Relaxing Space'
@@ -15,6 +16,7 @@ describe 'View Listing' do
   end
 
   it "be able to filter properties by date availability" do
+    sign_in
     visit('/spaces')
     expect(page).to have_content "Available from"
     expect(page).to have_content "to"
@@ -24,5 +26,18 @@ describe 'View Listing' do
     expect(page).to_not have_content "Old Space"
     expect(page).to have_content "New Space"
   end
+
+  it 'should display You own this badge if I am an owner' do
+    sign_in_host
+    visit('/spaces')
+    expect(page).to have_content "You own this"
+  end
+
+  it 'shouldn\'t display you own this badge if you are not an owner' do
+    sign_in
+    visit('/spaces')
+    expect(page).to_not have_content "You own this"
+  end
+
 
 end

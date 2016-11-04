@@ -13,14 +13,18 @@
   <button class="btn btn-default" type="submit">List spaces</button>
   </div>
 </form>
-
 <ul id="spaces">
   <% if @spaces %>
     <% @spaces.each do |space| %>
       <li class="space_list_item">
         <a class="space_moreinfo" href="/spaces/<%= space.id %>">
           <p class="space_price"> £<%=space.price%> per night </p>
-          <p class="space_name"> <%=space.name%> </p>
+          <p class="space_name"> <%=space.name%>
+
+            <% if space.user == @user %>
+              <span class="owner_badge"> You own this</span>
+            <% end %>
+          </p>
           <p> <%=space.description%> </p>
           <p> Available <%=space.available_from.strftime("%-d %B %Y")%> to <%=space.available_to.strftime("%-d %B %Y")%> </p>
         </a>
