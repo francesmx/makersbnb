@@ -71,6 +71,16 @@
   float: right;
 }
 
+.owner_badge {
+  color: #555;
+  border-radius: 2px;
+  font-size: 10px;
+  border: 1px dotted #999;
+  background-color: #faffce;
+  padding: 5px;
+  margin-left: 5px;
+}
+
 #room_details p {
   font-size: 16px;
 }
